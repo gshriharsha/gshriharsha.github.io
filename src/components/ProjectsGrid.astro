@@ -1,0 +1,71 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import { projects, type ProjectTag } from '../data/projects';
+
+const tags: (ProjectTag | 'All')[] = [
+  'All',
+  'AI',
+  'CPQ',
+  'Sales Cloud',
+  'Service Cloud',
+  'Experience Cloud',
+  'Field Service',
+  'Integration',
+  'Platform',
+  'Performance',
+  'DevOps',
+  'Data',
+  'Security',
+];
+---
+<section id="projects" class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-10 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Case Studies</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Architectures I've shipped</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        Sanitized, client-safe write-ups of the platforms, integrations, and AI systems I've architected and built.
+      </p>
+    </div>
+
+    <div role="toolbar" aria-label="Filter projects" class="reveal mb-8 flex flex-wrap gap-2">
+      {tags.map((tag, index) => (
+        <button
+          type="button"
+          data-filter={tag}
+          aria-pressed={index === 0 ? 'true' : 'false'}
+          class="rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-bg)] px-4 py-1.5 text-sm font-medium text-[color:var(--color-text-muted)] transition hover:bg-[color:var(--color-surface-2)] aria-[pressed=true]:border-[color:var(--color-accent)] aria-[pressed=true]:bg-[color:var(--color-accent)] aria-[pressed=true]:text-white"
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-projects-grid>
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-project-card]');
+
+  function applyFilter(filter: string) {
+    cards.forEach((card) => {
+      const tags = (card.dataset.tags ?? '').split(',');
+      const matches = filter === 'All' || tags.includes(filter);
+      card.style.display = matches ? '' : 'none';
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      applyFilter(btn.dataset.filter ?? 'All');
+    });
+  });
+</script>

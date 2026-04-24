@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gshriharsha.github.io/sitemap-index.xml

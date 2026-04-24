@@ -1,0 +1,51 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../data/site';
+
+const contactItems = [
+  { icon: 'lucide:mail', label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  { icon: 'simple-icons:linkedin', label: 'LinkedIn', value: 's-harsha1', href: site.links.linkedin },
+  { icon: 'simple-icons:github', label: 'GitHub', value: 'gshriharsha', href: site.links.github },
+  { icon: 'lucide:map-pin', label: 'Location', value: site.location, href: undefined },
+];
+---
+<section id="contact" class="border-t border-[color:var(--color-border)]">
+  <div class="mx-auto flex w-full max-w-[var(--max-content)] flex-col gap-10 px-4 py-20 sm:px-6 lg:flex-row lg:items-start lg:gap-16 lg:px-8">
+    <div class="reveal flex-1">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Contact</p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Let's talk Salesforce, AI, or event-driven architecture.</h2>
+      <p class="mt-4 max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        {site.availability}. The fastest way to reach me is email or LinkedIn.
+      </p>
+      <a
+        href={`mailto:${site.email}`}
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-[color:var(--color-accent-hover)]"
+      >
+        <Icon name="lucide:mail" class="h-4 w-4" aria-hidden="true" />
+        Send me an email
+      </a>
+    </div>
+
+    <ul class="reveal grid w-full gap-3 sm:grid-cols-2 lg:max-w-lg">
+      {contactItems.map((item) => {
+        const Wrapper = item.href ? 'a' : 'div';
+        return (
+          <li>
+            <Wrapper
+              {...(item.href ? { href: item.href, target: item.href.startsWith('http') ? '_blank' : undefined, rel: 'noopener' } : {})}
+              class="flex h-full items-start gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-4 transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-[color:var(--color-accent-soft)] text-[color:var(--color-accent)]">
+                <Icon name={item.icon} class="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div>
+                <p class="text-xs font-medium uppercase tracking-widest text-[color:var(--color-text-subtle)]">{item.label}</p>
+                <p class="mt-1 text-sm font-medium text-[color:var(--color-text)]">{item.value}</p>
+              </div>
+            </Wrapper>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

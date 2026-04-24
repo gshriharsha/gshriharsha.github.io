@@ -1,0 +1,34 @@
+---
+import { Icon } from 'astro-icon/components';
+import { certifications } from '../data/certifications';
+---
+<section id="certifications" class="border-t border-[color:var(--color-border)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Certifications</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">9× Salesforce Certified</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        Application Architect · Integration Architect · Data Architect · Sharing & Visibility Architect · Platform Developer II · Platform Developer I · App Builder · CPQ Specialist · Salesforce Associate.
+      </p>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {certifications.map((cert) => (
+        <li class="reveal group flex items-start gap-4 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          {cert.logo ? (
+            <img src={cert.logo} alt={cert.name} class="h-14 w-14 flex-shrink-0 object-contain" loading="lazy" />
+          ) : (
+            <span class="grid h-14 w-14 flex-shrink-0 place-items-center rounded-xl bg-[color:var(--color-accent-soft)] text-[color:var(--color-accent)]">
+              <Icon name="lucide:award" class="h-6 w-6" aria-hidden="true" />
+            </span>
+          )}
+          <div>
+            <h3 class="text-sm font-semibold text-[color:var(--color-text)]">{cert.short}</h3>
+            <p class="mt-1 text-xs text-[color:var(--color-text-muted)]">{cert.name}</p>
+            <p class="mt-2 inline-flex rounded-full bg-[color:var(--color-bg)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-[color:var(--color-text-subtle)]">{cert.category}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

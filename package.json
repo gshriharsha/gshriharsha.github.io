@@ -1,0 +1,29 @@
+{
+  "name": "gshriharsha.github.io",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@iconify-json/lucide": "^1.2.102",
+    "@iconify-json/simple-icons": "^1.2.79",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^5.18.1",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "eslint": "^10.2.1"
+  }
+}

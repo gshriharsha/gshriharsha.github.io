@@ -1,0 +1,13 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<button
+  type="button"
+  data-theme-toggle
+  class="inline-flex items-center justify-center rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-2 text-[color:var(--color-text-muted)] transition hover:bg-[color:var(--color-surface-2)] hover:text-[color:var(--color-text)]"
+  aria-label="Toggle theme"
+  aria-pressed="false"
+>
+  <Icon name="lucide:sun" class="h-5 w-5 [html[data-theme=dark]_&]:hidden" aria-hidden="true" />
+  <Icon name="lucide:moon" class="hidden h-5 w-5 [html[data-theme=dark]_&]:block" aria-hidden="true" />
+</button>

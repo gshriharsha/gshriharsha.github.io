@@ -1,0 +1,41 @@
+---
+import { experience } from '../data/experience';
+---
+<section id="experience" class="border-t border-[color:var(--color-border)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Experience</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">9+ years across enterprise SaaS & GTM</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        Architect-of-record and hands-on lead developer at public companies — from Confluent and LegalZoom to Splunk, X, and Dell.
+      </p>
+    </div>
+
+    <ol class="relative ml-3 border-l border-[color:var(--color-border)]">
+      {experience.map((role) => (
+        <li class="reveal mb-12 ml-6 last:mb-0">
+          <span class="absolute -left-2 flex h-4 w-4 items-center justify-center rounded-full bg-[color:var(--color-accent)] ring-4 ring-[color:var(--color-bg)]"></span>
+          <article class="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-6 shadow-sm transition hover:shadow-md">
+            <header class="mb-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <div>
+                <h3 class="text-xl font-semibold text-[color:var(--color-text)]">{role.role}</h3>
+                <p class="text-sm font-medium text-[color:var(--color-text-muted)]">
+                  {role.company}
+                  {role.ticker && <span class="ml-2 font-mono text-xs text-[color:var(--color-text-subtle)]">({role.ticker})</span>}
+                </p>
+              </div>
+              <p class="text-xs font-mono uppercase tracking-widest text-[color:var(--color-text-subtle)]">
+                {role.startDate} – {role.endDate ?? 'Present'} · {role.location}
+              </p>
+            </header>
+            <ul class="flex flex-col gap-2 text-sm text-[color:var(--color-text-muted)] sm:text-base">
+              {role.details.map((point) => (
+                <li class="flex gap-2"><span aria-hidden="true" class="mt-1 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[color:var(--color-accent)]"></span><span>{point}</span></li>
+              ))}
+            </ul>
+          </article>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

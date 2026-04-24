@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+<BaseLayout
+  title={`${project.title} — Case Study`}
+  description={project.summary}
+  pathname={`/projects/${project.slug}/`}
+>
+  <Nav />
+  <main id="main">
+    <article class="mx-auto w-full max-w-[var(--max-prose)] px-4 py-16 sm:px-6 lg:px-8">
+      <a href="/#projects" class="inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--color-accent)] hover:underline">
+        <Icon name="lucide:arrow-left" class="h-4 w-4" aria-hidden="true" />
+        Back to projects
+      </a>
+
+      <header class="mt-6 flex flex-col gap-3">
+        <p class="text-xs font-mono uppercase tracking-widest text-[color:var(--color-text-subtle)]">
+          {project.company} · {project.period}
+        </p>
+        <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">{project.title}</h1>
+        <p class="text-sm font-medium text-[color:var(--color-accent)]">Role · {project.role}</p>
+        <p class="text-base text-[color:var(--color-text-muted)] sm:text-lg">{project.summary}</p>
+        <ul class="mt-2 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <li>
+              <span class="inline-flex rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2.5 py-0.5 text-[11px] font-medium text-[color:var(--color-text-muted)]">
+                {tag}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </header>
+
+      <section class="mt-12 flex flex-col gap-3">
+        <h2 class="text-xl font-semibold tracking-tight">Problem</h2>
+        <p class="text-base text-[color:var(--color-text-muted)]">{project.problem}</p>
+      </section>
+
+      <section class="mt-10 flex flex-col gap-3">
+        <h2 class="text-xl font-semibold tracking-tight">Architecture</h2>
+        <ul class="flex flex-col gap-2 text-base text-[color:var(--color-text-muted)]">
+          {project.architecture.map((point) => (
+            <li class="flex gap-2"><span aria-hidden="true" class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[color:var(--color-accent)]"></span><span>{point}</span></li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-10 flex flex-col gap-3">
+        <h2 class="text-xl font-semibold tracking-tight">Tech stack</h2>
+        <ul class="flex flex-wrap gap-2">
+          {project.techStack.map((tech) => (
+            <li>
+              <span class="inline-flex rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1 text-xs font-medium text-[color:var(--color-text-muted)]">
+                {tech}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mt-10 flex flex-col gap-3">
+        <h2 class="text-xl font-semibold tracking-tight">Outcome</h2>
+        <ul class="flex flex-col gap-2 text-base text-[color:var(--color-text-muted)]">
+          {project.outcome.map((point) => (
+            <li class="flex gap-2"><span aria-hidden="true" class="mt-2 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500"></span><span>{point}</span></li>
+          ))}
+        </ul>
+      </section>
+
+      <div class="mt-12 border-t border-[color:var(--color-border)] pt-8">
+        <a href="/#projects" class="inline-flex items-center gap-1.5 text-sm font-medium text-[color:var(--color-accent)] hover:underline">
+          <Icon name="lucide:arrow-left" class="h-4 w-4" aria-hidden="true" />
+          Back to all case studies
+        </a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

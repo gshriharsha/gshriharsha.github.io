@@ -1,0 +1,34 @@
+---
+import { skillGroups } from '../data/skills';
+---
+<section id="skills" class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Skills</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Salesforce-first, polyglot full-stack</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        From Apex and LWC through AWS, Kafka, Data Cloud, and Agentforce — the toolset I use to deliver enterprise-grade GTM platforms.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {skillGroups.map((group) => (
+        <article class="reveal flex flex-col gap-3 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] p-6 shadow-sm">
+          <header>
+            <h3 class="text-lg font-semibold text-[color:var(--color-text)]">{group.name}</h3>
+            <p class="text-sm text-[color:var(--color-text-muted)]">{group.description}</p>
+          </header>
+          <ul class="flex flex-wrap gap-2">
+            {group.skills.map((skill) => (
+              <li>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 py-1 text-xs font-medium text-[color:var(--color-text-muted)]">
+                  {skill.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

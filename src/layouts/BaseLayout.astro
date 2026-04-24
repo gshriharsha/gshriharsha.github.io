@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  pathname?: string;
+  ogImage?: string;
+}
+
+const {
+  title = `${site.name} — ${site.title}`,
+  description = site.summary,
+  pathname = Astro.url.pathname,
+  ogImage = '/og-image.svg',
+} = Astro.props;
+
+const canonical = new URL(pathname, Astro.site).toString();
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.title,
+  email: `mailto:${site.email}`,
+  url: Astro.site?.toString(),
+  sameAs: [site.links.linkedin, site.links.github],
+  description: site.summary,
+  address: { '@type': 'PostalAddress', addressCountry: 'IN' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Wright State University' },
+    { '@type': 'CollegeOrUniversity', name: 'VNR Vignana Jyothi Institute of Technology' },
+  ],
+  knowsAbout: [
+    'Salesforce',
+    'Salesforce CPQ',
+    'Apex',
+    'Lightning Web Components',
+    'Agentforce',
+    'Data Cloud',
+    'Einstein Trust Layer',
+    'Apache Kafka',
+    'Event-driven architecture',
+    'AWS',
+    'GCP',
+    'Heroku',
+  ],
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+  </head>
+  <body class="bg-[color:var(--color-bg)] text-[color:var(--color-text)] antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
+    <script>
+      import { initReveal } from '../scripts/reveal';
+      import { initThemeToggle } from '../scripts/theme';
+      initReveal();
+      initThemeToggle('[data-theme-toggle]');
+    </script>
+  </body>
+</html>

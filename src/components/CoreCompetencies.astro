@@ -1,0 +1,23 @@
+---
+import { competencies } from '../data/competencies';
+---
+<section id="competencies" class="border-t border-[color:var(--color-border)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Core Competencies</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">What I bring to the table</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        Domains of expertise honed across 9+ years of enterprise Salesforce delivery.
+      </p>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {competencies.map((c) => (
+        <article class="reveal flex flex-col gap-2 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-5 shadow-sm transition hover:border-[color:var(--color-accent)] hover:shadow-md">
+          <h3 class="text-sm font-semibold text-[color:var(--color-text)]">{c.title}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-text-muted)]">{c.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

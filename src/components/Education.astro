@@ -1,0 +1,31 @@
+---
+import { education } from '../data/education';
+---
+<section id="education" class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+  <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Education</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Engineering foundations</h2>
+      <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
+        Electrical & electronics engineering background in the US and India.
+      </p>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {education.map((entry) => (
+        <li class="reveal rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-bg)] p-6 shadow-sm transition hover:shadow-md">
+          <p class="text-xs font-mono uppercase tracking-widest text-[color:var(--color-text-subtle)]">{entry.year}</p>
+          <h3 class="mt-2 text-lg font-semibold text-[color:var(--color-text)]">
+            {entry.degree} · {entry.field}
+          </h3>
+          <p class="mt-1 text-sm text-[color:var(--color-text-muted)]">
+            {entry.institution}
+          </p>
+          <p class="text-sm text-[color:var(--color-text-subtle)]">
+            {entry.location}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import CoreCompetencies from '../components/CoreCompetencies.astro';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import CertificationsGrid from '../components/CertificationsGrid.astro';
+import Education from '../components/Education.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <About />
+    <CoreCompetencies />
+    <ExperienceTimeline />
+    <SkillsGrid />
+    <CertificationsGrid />
+    <Education />
+    <ProjectsGrid />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

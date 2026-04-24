@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+---
+<BaseLayout title="404 — Page not found" description="The page you're looking for does not exist.">
+  <Nav />
+  <main id="main" class="mx-auto flex min-h-[60vh] w-full max-w-[var(--max-prose)] flex-col items-start justify-center gap-4 px-4 py-20 sm:px-6 lg:px-8">
+    <p class="font-mono text-sm uppercase tracking-widest text-[color:var(--color-accent)]">Error 404</p>
+    <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Page not found.</h1>
+    <p class="text-base text-[color:var(--color-text-muted)] sm:text-lg">
+      The page you tried to reach doesn't exist or has moved.
+    </p>
+    <a href="/" class="mt-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-accent)] px-5 py-2.5 text-sm font-medium text-white">
+      <Icon name="lucide:arrow-left" class="h-4 w-4" aria-hidden="true" />
+      Back to home
+    </a>
+  </main>
+  <Footer />
+</BaseLayout>

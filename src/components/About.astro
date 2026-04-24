@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+---
+<section id="about" class="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface)]">
+  <div class="mx-auto grid w-full max-w-[var(--max-content)] gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[280px_1fr] lg:gap-16 lg:px-8">
+    <div class="reveal flex flex-col items-start gap-4">
+      <div class="avatar-card aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl bg-[color:var(--color-surface-2)] shadow-lg">
+        <img src="/images/profile.png" alt={site.name} class="h-full w-full object-cover" />
+      </div>
+    </div>
+    <div class="reveal flex flex-col gap-6">
+      <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">About</p>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+        Architect-of-record for AI-native, event-driven Salesforce platforms.
+      </h2>
+      {site.about.map((para) => (
+        <p class="text-base text-[color:var(--color-text-muted)] sm:text-lg">{para}</p>
+      ))}
+      <dl class="mt-4 grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-5">
+        {site.stats.map((stat) => (
+          <div>
+            <dt class="text-xs font-medium uppercase tracking-widest text-[color:var(--color-text-subtle)]">{stat.label}</dt>
+            <dd class="mt-1 text-2xl font-semibold text-[color:var(--color-text)]">{stat.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
