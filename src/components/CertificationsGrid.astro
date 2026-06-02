@@ -1,14 +1,18 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { certifications } from '../data/certifications';
+
+const anthropicCerts = certifications.filter(c => c.organization === 'Anthropic');
+const salesforceCerts = certifications.filter(c => !c.organization || c.organization === 'Salesforce');
 ---
 <section id="certifications" class="border-t border-[color:var(--color-border)]">
   <div class="mx-auto w-full max-w-[var(--max-content)] px-4 py-20 sm:px-6 lg:px-8">
     <div class="reveal mb-12 flex flex-col gap-3">
       <p class="text-sm font-medium uppercase tracking-widest text-[color:var(--color-accent)]">Certifications</p>
-      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">9× Salesforce Certified</h2>
+      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">{certifications.length}× Certified</h2>
       <p class="max-w-[var(--max-prose)] text-base text-[color:var(--color-text-muted)] sm:text-lg">
-        Application Architect · Integration Architect · Data Architect · Sharing & Visibility Architect · Platform Developer II · Platform Developer I · App Builder · CPQ Specialist · Salesforce Associate.
+        {salesforceCerts.length}× Salesforce Certified.
+        {anthropicCerts.length > 0 && `${anthropicCerts.length}× Anthropic Certified·`}
       </p>
     </div>
 
@@ -22,10 +26,23 @@ import { certifications } from '../data/certifications';
               <Icon name="lucide:award" class="h-6 w-6" aria-hidden="true" />
             </span>
           )}
-          <div>
-            <h3 class="text-sm font-semibold text-[color:var(--color-text)]">{cert.short}</h3>
+          <div class="flex-1">
+            <h3 class="text-sm font-semibold text-[color:var(--color-text)]">
+              {cert.url ? (
+                <a href={cert.url} target="_blank" rel="noopener noreferrer" class="hover:text-[color:var(--color-accent)] transition-colors inline-flex items-center gap-1">
+                  {cert.short} <Icon name="lucide:external-link" class="h-3 w-3" />
+                </a>
+              ) : (
+                cert.short
+              )}
+            </h3>
             <p class="mt-1 text-xs text-[color:var(--color-text-muted)]">{cert.name}</p>
-            <p class="mt-2 inline-flex rounded-full bg-[color:var(--color-bg)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-[color:var(--color-text-subtle)]">{cert.category}</p>
+            <div class="mt-2 flex flex-wrap items-center gap-2">
+              <span class="inline-flex rounded-full bg-[color:var(--color-bg)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-widest text-[color:var(--color-text-subtle)]">{cert.category}</span>
+              {cert.issued && (
+                <span class="text-[10px] text-[color:var(--color-text-muted)]">Issued {cert.issued}</span>
+              )}
+            </div>
           </div>
         </li>
       ))}
