@@ -4,7 +4,7 @@ export const site = {
   title: "Salesforce Technical Architect",
   tagline: "9× Salesforce Certified · Architect · Lead Developer",
   summary:
-    "Salesforce Technical Architect and hands-on lead developer with 9+ years designing enterprise-scale solutions on the Lightning Platform — Sales, Service, Revenue (CPQ & Billing), Experience, Field Service, and Data Cloud. Currently architect-of-record across multiple GTM agile teams at a public enterprise SaaS company.",
+    "Salesforce Technical Architect and hands-on lead developer with ~10 years designing enterprise-scale solutions on the Lightning Platform — Sales, Service, Revenue (CPQ & Billing), Experience, Field Service, and Data Cloud. Currently architect-of-record across multiple GTM agile teams at a public enterprise SaaS company.",
   about: [
     "I architect AI-native, event-driven Salesforce solutions for enterprise GTM. Currently I serve as the Senior Salesforce Technical Architect at Confluent, owning data models, integration blueprints, and hands-on Apex / LWC / Flow delivery across Lead-to-Order, CPQ, Forecasting, PSA, and Support.",
     "My current focus is AI-native architecture on the Salesforce platform — Agentforce, Atlas Reasoning Engine, Einstein Trust Layer, and Data Cloud — paired with the engineering rigor to ship it safely (governance, audit logging, prompt templates in Custom Metadata, per-user rate limits). I am also a polyglot full-stack engineer comfortable across AWS, Azure, GCP, and Heroku — building serverless workloads, real-time event pipelines on Apache Kafka, and modern frontends in React, Angular, and Vue.",
@@ -20,7 +20,7 @@ export const site = {
     resume: "resume.pdf",
   },
   stats: [
-    { label: "Years experience", value: "9+" },
+    { label: "Years experience", value: "~10" },
     { label: "Salesforce certifications", value: "9×" },
   ],
 } as const;
