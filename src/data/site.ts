@@ -2,7 +2,7 @@ export const site = {
   name: "Shri Harsha",
   shortName: "Harsha",
   title: "Salesforce Technical Architect",
-  tagline: "9× Salesforce Certified · Architect · Lead Developer",
+  tagline: "9× Salesforce Certified · 5x AI Certified · Technical Architect · Lead Developer",
   summary:
     "Salesforce Technical Architect and hands-on lead developer with ~10 years designing enterprise-scale solutions on the Lightning Platform — Sales, Service, Revenue (CPQ & Billing), Experience, Field Service, and Data Cloud. Currently architect-of-record across multiple GTM agile teams at a public enterprise SaaS company.",
   about: [
