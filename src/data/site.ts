@@ -22,5 +22,6 @@ export const site = {
   stats: [
     { label: "Years experience", value: "~10" },
     { label: "Salesforce certifications", value: "9×" },
+    { label: "AI certifications", value: "5×" },
   ],
 } as const;

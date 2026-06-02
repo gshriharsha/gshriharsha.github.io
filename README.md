@@ -63,7 +63,7 @@ npm run preview
 │   │   ├── site.ts          # Name, title, contact, stats
 │   │   ├── experience.ts    # Work history timeline
 │   │   ├── skills.ts        # Skill groups
-│   │   ├── certifications.ts# Salesforce certifications
+│   │   ├── certifications.ts# Proffesional certifications 
 │   │   ├── education.ts     # Education history
 │   │   └── projects.ts      # Case studies → /projects/<slug>/
 │   ├── layouts/             # Page layouts
@@ -85,7 +85,7 @@ All content is data-driven. Edit the typed files in `src/data/`:
 | `site.ts`           | Name, title, summary, contact links, stats             |
 | `experience.ts`     | Roles for the experience timeline                      |
 | `skills.ts`         | Skill groups and chips                                 |
-| `certifications.ts` | Salesforce certifications                              |
+| `certifications.ts` | Proffesional certifications                              |
 | `education.ts`      | Education history                                      |
 | `projects.ts`       | Case studies (each becomes a `/projects/<slug>/` page) |
 
